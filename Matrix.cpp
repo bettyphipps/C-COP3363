@@ -8,7 +8,8 @@ using namespace std;
 int const ROWCAP = 100; //rowcap and colcap are now set to 100 and will not change
 int const COLCAP = 100;
 
-//functions to initialize the matrix, print the matrix, and to print the triangle sum. Initalized matrix with the column number, n row is number of rows, n col is number of columns)
+//functions to initialize the matrix, print the matrix, and to print the triangle sum. Initalized matrix with the column number, n row is number of rows, n col is number of columns
+
 void initialize (float matrix[][COLCAP], float nRow, float nCol);
 void print (float matrix[][COLCAP], float nRow, float nCol);
 void printSums (float matrix[][COLCAP], float nRow, float nCol);
@@ -19,14 +20,16 @@ int main()
         float nRow, nCol;
         
         //promting the user to enter columns and rows numbers
-        cout<<"Enter the number of rows: ";
+        
+	cout<<"Enter the number of rows: ";
         cin>>nRow;
         
         cout<<"Enter the number of columns: ";
         cin>>nCol;
         
         //calling funtions to take in the array, print it, then print the sums
-        initialize(matrix, nRow, nCol);
+        
+	initialize(matrix, nRow, nCol);
         print(matrix, nRow, nCol);
         printSums(matrix, nRow, nCol);
 
@@ -36,40 +39,42 @@ int main()
 void initialize (float matrix[][COLCAP], float nRow, float nCol)
 {
         cout<<"Enter the matrix: "<<endl;
-        //iterating through the column then row, accept numbers into the matrix
-        for (int i =0; i < nRow; i++)
-                for (int j =0; j < nCol; j++)
-                        cin>>matrix[i][j];
+        
+	//iterating through the column then row, accept numbers into the matrix
+        
+		for (int i =0; i < nRow; i++)
+                	for (int j =0; j < nCol; j++)
+                        	cin>>matrix[i][j];
 }
 
 void print (float matrix[][COLCAP], float nRow, float nCol)
 {
         cout<<"You entered: "<<endl;
-        //Iterating through the matrix and printing out the corresponding row, column
-        for (int i = 0; i < nRow; i++)
-                for (int j =0; j <nCol; j++)
-                        {
-                                cout<<matrix[i][j]<<" \n  "[j == nCol-1];
+        
+	//Iterating through the matrix and printing out the corresponding row, column
+
+        	for (int i = 0; i < nRow; i++)
+                	for (int j =0; j <nCol; j++){
+                        	        cout<<matrix[i][j]<<" \n  "[j == nCol-1];
                         }
 }
 
-void printSums (float matrix[][COLCAP], float nRow, float nCol)
-{
-        //Setting sums to 0 for incrementing
-        float upperSum = 0;
-        float lowerSum = 0;
+void printSums (float matrix[][COLCAP], float nRow, float nCol) {
         
-        for (int i = 0; i < nRow; i++)
-                for (int j = 0; j <nCol; j++)
-                {
-                        if (i <=j)
-                        upperSum += matrix[i][j]; //add the sum if the column number greater than the row number
-                }
+	//Setting sums to 0 for incrementing
+
+        	float upperSum = 0;
+        	float lowerSum = 0;
+        
+        	for (int i = 0; i < nRow; i++)
+                	for (int j = 0; j <nCol; j++){
+                        	if (i <=j)
+                        	upperSum += matrix[i][j]; //add the sum if the column number greater than the row number
+                	}
 
 
         for (int i = 0; i < nRow; i++)
-                for (int j = 0; j <nCol; j++)
-                {
+                for (int j = 0; j <nCol; j++){
                         if (i >=j)
                         lowerSum += matrix[i][j]; //add the sum if the column number is less than the row number
                 }
