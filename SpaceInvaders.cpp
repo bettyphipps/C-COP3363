@@ -11,9 +11,9 @@ using namespace std;
 
 //prompting the user to input the dimensions of the game grid and the number of shots per cannon, then creates the grid and initiates the game simulation, ensuring memory deallocation upon completion.
 
-int main()
-{
-        int rows, cols, shotsPerCan;
+int main(){
+        
+	int rows, cols, shotsPerCan;
         
         cout<<"Enter the number of rows in the grid: ";
         cin>> rows;
@@ -37,8 +37,8 @@ int main()
 
 
 
-char** createGrid (int row, int col)
-{
+char** createGrid (int row, int col){
+
 //allocate memory
         char** grid = new char*[row];
         
@@ -46,11 +46,13 @@ char** createGrid (int row, int col)
                 grid[i] = new char[col];
         }
 
+
 //grid with space '.'
         for (int i =0; i < row; i++){
                 for (int j =0; j < col; j++)
                         grid[i][j] = '.';
         }
+
 
 
 //reading the number of cannons and positions
@@ -65,25 +67,26 @@ char** createGrid (int row, int col)
         }
 
 //read number of ships and positions
+ 
         int nShips;
         cout<<"Enter the number of ships: ";
         cin>>nShips;
         cout<<"Enter the coordinates of the ships, and their sheild points (x,y), BP:\n";
-        for (int i = 0; i < nShips; i++){
-
-                //printGrid(grid, row,col);
-                int rowInput, colInput;
-                char shieldPoint;
-                
+ 
+       for (int i = 0; i < nShips; i++){
+  	//printGrid(grid, row,col);
+		int rowInput, colInput;
+        	char shieldPoint;
                 string index;
-                cin>>index;
-                rowInput = index[1] - '0';
-                colInput = index[3] - '0';
-                shieldPoint = index[6]; 
-                
-                grid[rowInput][colInput] = shieldPoint;
         
-        }
+		cin>>index;
+        	rowInput = index[1] - '0';
+        	colInput = index[3] - '0';
+        	shieldPoint = index[6]; 
+                
+        	grid[rowInput][colInput] = shieldPoint;
+        
+       }
 
         return grid;
 }
@@ -91,7 +94,7 @@ char** createGrid (int row, int col)
 
 
 void printGrid (char** grid, int row, int col){
-        //printing the grid
+	//printing the grid
         for (int i = 0; i < row; i++){  
                 for (int j = 0; j <col; j++){
                         cout<<grid[i][j]<<" ";
@@ -101,7 +104,8 @@ void printGrid (char** grid, int row, int col){
 }
 
 void playGame (char** grid, int row, int col, int shotsPerCan){
-        cout<<"Game at the start:"<<endl;
+        
+	cout<<"Game at the start:"<<endl;
         printGrid(grid, row, col);
 
         //while the game is still playing
